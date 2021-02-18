@@ -19,6 +19,7 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
      */
     public ArrayedHeap280(int cap) {
         super(cap);
+        items= (I[]) new Comparable[capacity+1]; // helps make each item comparable in the item list
     }
 
     /**
@@ -27,6 +28,9 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
      * @throws ContainerFull280Exception throw an exception if the container is full.
      */
     public void insert(I x) throws ContainerFull280Exception {
+        if(this.isFull()){
+            throw new ContainerFull280Exception("Heap has reached its cap, FULL");
+        }
 
     }
 
@@ -37,6 +41,9 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
      *
      */
     public void deleteItem() throws ContainerEmpty280Exception,NoCurrentItem280Exception {
+        if(this.isEmpty()){
+            throw new ContainerEmpty280Exception("Impossible to delete item from empty heap");
+        }
 
     }
 
