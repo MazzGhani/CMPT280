@@ -31,7 +31,10 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         if(this.isFull()){
             throw new ContainerFull280Exception("Heap has reached its cap, FULL");
         }
-
+        else{
+            count++;
+            items[count]=x;
+        }
     }
 
     /**
@@ -44,6 +47,10 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         if(this.isEmpty()){
             throw new ContainerEmpty280Exception("Impossible to delete item from empty heap");
         }
+        if(count ==0){
+            throw new NoCurrentItem280Exception("There seems to be no item");
+        }
+
 
     }
 
