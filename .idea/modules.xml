@@ -3,11 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/A1Q1/A1Q1.iml" filepath="$PROJECT_DIR$/A1Q1/A1Q1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CMPT280.iml" filepath="$PROJECT_DIR$/CMPT280.iml" />
       <module fileurl="file://$PROJECT_DIR$/A4/asn4-StarterCode/lib280-asn4/asn4.iml" filepath="$PROJECT_DIR$/A4/asn4-StarterCode/lib280-asn4/asn4.iml" />
-      <module fileurl="file://$USER_HOME$/Desktop/asn4-StarterCode/lib280-asn4/src/lib280/lib280.iml" filepath="$USER_HOME$/Desktop/asn4-StarterCode/lib280-asn4/src/lib280/lib280.iml" />
-      <module fileurl="file://$USER_HOME$/Documents/asn1_startercode/startingcode/lib280-asn1/lib280-asn1/lib280-asn1.iml" filepath="$USER_HOME$/Documents/asn1_startercode/startingcode/lib280-asn1/lib280-asn1/lib280-asn1.iml" />
-      <module fileurl="file://$USER_HOME$/Documents/asn3_startercode/lib280-asn3/lib280-asn3/lib280-asn3.iml" filepath="$USER_HOME$/Documents/asn3_startercode/lib280-asn3/lib280-asn3/lib280-asn3.iml" />
-      <module fileurl="file://$USER_HOME$/Desktop/asn4-StarterCode/lib280-asn4/lib280-asn4.iml" filepath="$USER_HOME$/Desktop/asn4-StarterCode/lib280-asn4/lib280-asn4.iml" />
     </modules>
   </component>
 </project>

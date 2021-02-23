@@ -28,13 +28,19 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
      * @throws ContainerFull280Exception throw an exception if the container is full.
      */
     public void insert(I x) throws ContainerFull280Exception {
-        if(this.isFull()){
+        if(this.isFull()){ // throwing just in case its full
             throw new ContainerFull280Exception("Heap has reached its cap, FULL");
         }
         else{
             count++;
             items[count]=x;
         }
+        this.currentNode=1;
+        if(count==1){
+            return;
+        }
+        int coutner=count;
+
     }
 
     /**
