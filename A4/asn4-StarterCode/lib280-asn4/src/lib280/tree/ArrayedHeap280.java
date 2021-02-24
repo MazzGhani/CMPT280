@@ -39,10 +39,12 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
             return;
         }
         int counter=count;
+        int par= findParent(counter);
 
-        while(items[counter].compareTo(items[findParent(counter)])>0){
-            I temp =items[findParent(counter)];
-            items[findParent(counter)]=items[counter];
+        while(items[counter].compareTo(items[par])>0){
+
+            I temp =items[par];
+            items[par]=items[counter];
             items[counter]= temp;
         }
 
