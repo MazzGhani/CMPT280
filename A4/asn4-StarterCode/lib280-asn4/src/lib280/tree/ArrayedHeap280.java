@@ -3,7 +3,6 @@ package lib280.tree;
 import lib280.base.Dispenser280;
 import lib280.exception.ContainerEmpty280Exception;
 import lib280.exception.ContainerFull280Exception;
-import lib280.exception.DuplicateItems280Exception;
 import lib280.exception.NoCurrentItem280Exception;
 
 
@@ -39,7 +38,13 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         if(count==1){
             return;
         }
-        int coutner=count;
+        int counter=count;
+
+        while(items[counter].compareTo(items[findParent(counter)])>0){
+            I temp =items[findParent(counter)];
+            items[findParent(counter)]=items[counter];
+            items[counter]= temp;
+        }
 
     }
 
@@ -53,10 +58,6 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         if(this.isEmpty()){
             throw new ContainerEmpty280Exception("Impossible to delete item from empty heap");
         }
-        if(count ==0){
-            throw new NoCurrentItem280Exception("There seems to be no item");
-        }
-
 
     }
 
