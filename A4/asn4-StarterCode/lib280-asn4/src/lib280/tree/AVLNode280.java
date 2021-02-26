@@ -4,73 +4,63 @@ package lib280.tree;
  * AVL Node that extends the BinaryNode to help keep track of the heights of the Tree
  */
 public class AVLNode280<I extends Comparable<? super I>> extends BinaryNode280<I> {
-    protected int height; // general height for the tree
+
+    int height;
 
     /**
-     * Creating the Node
-     * @param x this is stored in the tree
+     * Construct a new node with item x.
+     *
+     * @param x the item placed in the new node
+     * @timing Time = O(1)
      */
     public AVLNode280(I x) {
         super(x);
-        height = 1; // bigger then 0 so starts at 1
-    }
-
-    /**
-     * Set height of the current node
-     * @param x new height
-     */
-    protected void setHeight(int x) {
-        this.height = x;
-    }
-
-    /**
-     * Gets the left height of the root node
-     * @return height of the left sub node
-     */
-    protected int getLHeight() {
-        if (this.leftNode == null) {
-            return 0;
-        }
-        return ((AVLNode280<I>) this.leftNode).height;
-    }
-
-    /**
-     * gets the right height of the root node
-     * @return height of right sub node
-     */
-    protected int getRHeight() {
-        if (this.rightNode == null) {
-            return 0;
-        }
-        return ((AVLNode280<I>) this.rightNode).height;
+        height=1; // height starts at 1
     }
 
     /**
      * Gets the left AVL Node of this node
      * @return left node
      */
-    @Override
-    public AVLNode280<I> leftNode() {
+    public AVLNode280<I> leftNode(){
         return (AVLNode280<I>) super.leftNode();
     }
 
     /**
-     * gets the right node of this avl node
-     * @return right avl node
+     * Gets the right AVL Node of this node
+     * @return right node
      */
-    @Override
-    public AVLNode280<I> rightNode() {
+    public AVLNode280<I> rigthNode(){
         return (AVLNode280<I>) super.rightNode();
     }
 
     /**
-     * Modified to string method to display information regarding the current node's height
-     * left height and right heights
-     * @return String containing crucial information regarding the node to be printedB
+     * Sets the height for the tree, mostly used to change it
+     * once the imbalanced is corrected
+     * @param x settign the height for the tree
      */
-    @Override
-    public String toString() {
-        return "Item: " + this.item + "  | Height: " + this.height + " | Left Height: " +
-                this.getLHeight() + " | Right Height: " + this.getRHeight();
+    protected void setHeight(int x){
+        this.height=x;
     }
+    /**
+     * Gets the height of the left side of the tree
+     * @return left side height
+     */
+    protected int getLeftHeight(){
+        if(this.leftNode==null){
+            return  0;
+        }
+        return ((AVLNode280<I>) this.leftNode).height;
+    }
+    /**
+     * Gets the height for the right side of the tree
+     * @return right side height
+     */
+    protected int getRightHeight(){
+        if(this.rightNode==null){
+            return  0;
+        }
+        return ((AVLNode280<I>) this.rightNode).height;
+    }
+
 }
