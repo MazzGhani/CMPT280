@@ -1,13 +1,10 @@
 package lib280.tree;
-
+//Mazz Ghani mag151 11252417 CMPT 280
 import lib280.base.Dispenser280;
 import lib280.exception.ContainerEmpty280Exception;
 import lib280.exception.ContainerFull280Exception;
-import lib280.exception.NoCurrentItem280Exception;
 
-
-
-/*
+/**
 * Heap extends the Binary tree. Array will now be ordered, elemts can be comparable to each other
 * */
 public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBinaryTree280<I> implements Dispenser280<I> {
@@ -30,20 +27,18 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         if(this.isFull()){ // throwing just in case its full
             throw new ContainerFull280Exception("Heap has reached its cap, FULL");
         }
-        else{
-            count++;
-            items[count]=x;
+        if (this.count==0){ // just in case the counter is 0
+            this.currentNode++; // pointer is now the root
         }
-        this.currentNode=1;
-        if(count==1){
-            return;
-        }
+        this.count++;
+        this.items[count]=x; // we insert on the left first
+        this.currentNode=this.count;
         int counter=count;
         int par= findParent(counter);
+        // checkign where to insert the newly added item
+        while(counter>1 && items[counter].compareTo(items[par])>0){
 
-        while(items[counter].compareTo(items[par])>0){
-
-            I temp =items[par];
+            I temp =items[par]; // in the left most side
             items[par]=items[counter];
             items[counter]= temp;
         }
@@ -56,10 +51,33 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
      * @throws ContainerEmpty280Exception if the heap is empty.
      *
      */
-    public void deleteItem() throws ContainerEmpty280Exception,NoCurrentItem280Exception {
+    public void deleteItem() throws ContainerEmpty280Exception {
         if(this.isEmpty()){
             throw new ContainerEmpty280Exception("Impossible to delete item from empty heap");
         }
+        if(this.count>1){
+            this.currentNode=1;
+            this.items[currentNode]= this.items[count];
+        }
+        this.count--;
+        if( this.count == 0) {
+            this.currentNode = 0;
+            return;
+        }
+        int n=1;
+        while(findLeftChild(n)<=count){
+            int child= findLeftChild(n);
+            if(child+1 <=count && items[child].compareTo(items[child+1])<0){
+                child++;
+            }
+            if( items[n].compareTo(items[child]) < 0 ) {
+                I temp = items[n];
+                items[n] = items[child];
+                items[child] = temp;
+            }
+            else return;
+        }
+
 
     }
 

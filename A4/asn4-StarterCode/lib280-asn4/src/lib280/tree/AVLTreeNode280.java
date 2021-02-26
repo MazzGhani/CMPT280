@@ -1,6 +1,10 @@
 package lib280.tree;
 
 public class AVLTreeNode280<I extends Comparable<? super I>> extends BinaryNode280 {
+
+
+    protected int key, height, lHeight,rHeight;
+
     /**
      * Construct a new node with item x.
      *
@@ -11,18 +15,36 @@ public class AVLTreeNode280<I extends Comparable<? super I>> extends BinaryNode2
         super(x);
     }
 
+    public int getHeight() {
+        return this.height;
+    }
 
-    /*Height*/
+    public void setHeight(int height){
+        this.height= height;
+    }
 
-    /*getHeight*/
+    public int getlHeight(){
+        return this.lHeight;
+    }
 
-    /*leftSide*/
+    public void setLHeight(int Lheight){
+        this.lHeight= Lheight;
+    }
 
-    /*rightSide*/
 
-    /*rightNode*/
+    public int getrHeight() {
+        return rHeight;
+    }
 
-    /*leftNode*/
+    public void setRHeight(int Rheight){
+        this.rHeight= Rheight;
+    }
 
-    /*To String */
+    public AVLTreeNode280<I> leftNode() {
+        return (AVLTreeNode280<I>)super.leftNode();
+    }
+
+    public AVLTreeNode280<I> rightNode() {
+        return (AVLTreeNode280<I>) super.rightNode();
+    }
 }
