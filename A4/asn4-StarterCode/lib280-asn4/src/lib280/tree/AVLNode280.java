@@ -1,4 +1,5 @@
 package lib280.tree;
+//Mazz Ghani mag151 11252417 CMPT 280
 
 /**
  * AVL Node that extends the BinaryNode to help keep track of the heights of the Tree
@@ -9,9 +10,7 @@ public class AVLNode280<I extends Comparable<? super I>> extends BinaryNode280<I
 
     /**
      * Construct a new node with item x.
-     *
      * @param x the item placed in the new node
-     * @timing Time = O(1)
      */
     public AVLNode280(I x) {
         super(x);
@@ -47,17 +46,17 @@ public class AVLNode280<I extends Comparable<? super I>> extends BinaryNode280<I
      * @return left side height
      */
     protected int getLeftHeight(){
-        if(this.leftNode==null){
+        if(this.leftNode==null){ // if the node is empty
             return  0;
         }
-        return ((AVLNode280<I>) this.leftNode).height;
+        return ((AVLNode280<I>) this.leftNode).height; // return the height of the node
     }
     /**
      * Gets the height for the right side of the tree
      * @return right side height
      */
     protected int getRightHeight(){
-        if(this.rightNode==null){
+        if(this.rightNode==null){ // same idea as the left side but for the right side
             return  0;
         }
         return ((AVLNode280<I>) this.rightNode).height;

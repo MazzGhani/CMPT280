@@ -30,17 +30,17 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         if (this.count==0){ // just in case the counter is 0
             this.currentNode++; // pointer is now the root
         }
-        this.count++;
+
+        this.count++; // increase the count by 1
         this.items[count]=x; // we insert on the left first
-        this.currentNode=this.count;
+        this.currentNode=this.count; // the node we're on is now the number of the count
         int counter=count;
         int par= findParent(counter);
-        // checkign where to insert the newly added item
+        // checkign where to insert the newly added item, if cur is bigger than its parent
         while(counter>1 && items[counter].compareTo(items[par])>0){
-
-            I temp =items[par]; // in the left most side
+            I temp =items[par];
             items[par]=items[counter];
-            items[counter]= temp;
+            items[counter]= temp; // now the current node is the parent
         }
 
     }
@@ -52,28 +52,28 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
      *
      */
     public void deleteItem() throws ContainerEmpty280Exception {
-        if(this.isEmpty()){
+        if(this.isEmpty()){ // if there's no item , so not possible to delete
             throw new ContainerEmpty280Exception("Impossible to delete item from empty heap");
         }
-        if(this.count>1){
-            this.currentNode=1;
-            this.items[currentNode]= this.items[count];
+        if(this.count>1){ // if the cursor is bigger then 1
+            this.currentNode=1; // the current node is 1
+            this.items[currentNode]= this.items[count]; // cursor is now at the number 1 node
         }
-        this.count--;
-        if( this.count == 0) {
+        this.count--; // decreasing the coutner by 1
+        if( this.count == 0) { // if it's empty make the current node the root node
             this.currentNode = 0;
             return;
         }
-        int n=1;
-        while(findLeftChild(n)<=count){
+        int n=1; // starting on the 1 node
+        while(findLeftChild(n)<=count){ // while we find the left node child, when its less or equal to the count
             int child= findLeftChild(n);
-            if(child+1 <=count && items[child].compareTo(items[child+1])<0){
-                child++;
+            if(child+1 <=count && items[child].compareTo(items[child+1])<0){ // if its the right side, and if its bigger
+                child++; // select that right child
             }
-            if( items[n].compareTo(items[child]) < 0 ) {
+            if( items[n].compareTo(items[child]) < 0 ) { // if parent is smaller than the rot
                 I temp = items[n];
-                items[n] = items[child];
-                items[child] = temp;
+                items[n] = items[child]; // prev node is now the current node
+                items[child] = temp; //current node to the right node's item
             }
             else return;
         }
